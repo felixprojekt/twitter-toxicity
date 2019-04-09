@@ -1,6 +1,6 @@
-$(function() {
-    $( window ).load(function() {
-      $("body").removeClass("loading");
+$(function () {
+    $(document).on("load", function () {
+        $("body").removeClass("loading");
     });
-});
+})
 

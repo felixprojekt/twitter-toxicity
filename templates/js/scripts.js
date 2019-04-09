@@ -48,7 +48,7 @@ $(function() {
 					var request_time = new Date().getTime() - start_time;
 					//console.log("fetched " + id + " loaded in " + request_time + " ms");
 
-					console.log("name: " + result.name + " toxicity: " + result.toxicity);
+					//console.log("name: " + result.name + " toxicity: " + result.toxicity);
 
 					if(result.toxicity > 140) {
 						createBubble(result.name, result.toxicity);

@@ -57,16 +57,16 @@ $(function() {
 
 					$("#loading-name").html("@" + result.name);
 
-					if(result.toxicity > 580) {
+					if(result.toxicity > 550) {
 						createBubble(result.name, result.toxicity / 3);
 					}
 
 					len -= 1;
 
-					console.log(len);
-
-					if(len < 2) {
-						showFinalResults();
+					if(len < 1) {
+						setTimeout(function() {
+							showFinalResults();
+						}, 1000)
 					}
 				}
 			});
@@ -102,7 +102,7 @@ $(function() {
 		$("#bubbles div").css("color", "transparent");
 	}
 
-	function createBubble(name, size, timeout = 100) {
+	function createBubble(name, size) {
 		var div = document.createElement("div");
 		var top = 100 + randBetween(0,65);
 
@@ -114,10 +114,8 @@ $(function() {
 		div.setAttribute("class", "animated jello slow");
 		div.setAttribute("data-size", size);
 
-		setTimeout(function() {
-			document.getElementById("bubbles").appendChild(div);
-		}, timeout);
-		
+		document.getElementById("bubbles").appendChild(div);
+
 	}
 
 	function getSizes() {

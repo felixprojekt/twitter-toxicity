@@ -32,7 +32,14 @@ def user_toxicity(request, user_id):
         "toxicity": toxicity,
     }
 
-    request.session['toxicity'][user.screen_name] = toxicity
+    if not 'toxicity' in request.session or not request.session['toxicity']:
+        request.session['toxicity'] = result
+    else:
+        request.session['toxicity'].append(result);
+
+    #request.session['toxicity'] = result
+
+    #request.session['toxicity'][user.screen_name] = toxicity
 
     return JsonResponse(result, safe=False)
 

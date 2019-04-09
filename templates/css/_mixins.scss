@@ -1,0 +1,136 @@
+//Used by main scss file with @import "mixins"; at the beginning of the file
+
+// generic transform
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+    @include transform(scale($scale));
+}
+
+//flip element horizontally
+@mixin scaleX($scale) {
+    @include transform(scaleX($scale));
+}
+
+// translate
+@mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+/*
+Linear gradient, use it like:
+@include linear-gradient(45deg, rgb(68,133,225) 0%, rgb(58,165,238) 100% );
+or
+@include linear-gradient(-180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 100% );
+ */
+@mixin linear-gradient($args...) {
+    background-image: -o-linear-gradient($args);
+    background-image: -moz-linear-gradient($args);
+    background-image: -webkit-linear-gradient($args);
+    background-image: linear-gradient($args);
+}
+
+/**
+ * Radial gradient
+ *
+ * Use it like 
+ * @include radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+ */
+@mixin radial-gradient($args...) {
+    background-image: -o-radial-gradient($args);
+    background-image: -moz-radial-gradient($args);
+    background-image: -webkit-radial-gradient($args);
+    background-image: radial-gradient($args);
+}
+
+//blur
+@mixin blur($amount) {
+    -webkit-filter: blur($amount);
+    -moz-filter: blur($amount);
+    -o-filter: blur($amount);
+    -ms-filter: blur($amount);
+    filter: blur($amount);
+}
+//box-shadow
+@mixin box-shadow($args...) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    box-shadow: $args;
+}
+
+//mask image with svg as a mask, $maskSize can be "contain"
+@mixin mask-image($maskUrl, $maskSize) {
+    mask-image: url($maskUrl);
+    -webkit-mask-image: url($maskUrl);
+    mask-mode: alpha;
+    -webkit-mask-mode: alpha;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: $maskSize;
+    -webkit-mask-size: $maskSize;
+    mask-position: center;
+    -webkit-mask-position: center;
+}
+
+/*
+Animation mixin, use it with keyframes mixin, like:
+@include animation(neonGlow, 5s);
+ */
+@mixin animation($name, $duration, $iterations, $curve: ease-in-out) {
+    -webkit-animation: $name $duration $iterations $curve; /* Safari 4+ */
+    -moz-animation:    $name $duration $iterations $curve; /* Fx 5+ */
+    -o-animation:      $name $duration $iterations $curve; /* Opera 12+ */
+    animation:         $name $duration $iterations $curve; /* IE 10+, Fx 29+ */
+}
+
+/*
+keyframes mixin, use it like:
+@include keyframes(neonGlow) {
+    0% {
+        background-color: #ffccf2;
+    }
+    50% {
+        background-color: #ccffcc;
+    }
+    100% {
+        background-color: #ccffff;
+    }
+}
+*/
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}

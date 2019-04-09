@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Twitter Toxicity</title>
+	<meta name="author" content="Milan Švehla">
+	<link href="https://fonts.googleapis.com/css?family=Muli:400,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+	<link href="{% static "/css/custom.css" %}" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="text-wrapper" id="intro">
+			<h1>Get <em>toxicity</em> of your twitter feed</h1>
+			<h2>Analyze your twitter friends and get rid of <em>toxic</em>, <em>insulting</em> and <em>violent</em> accounts.</h2>
+		</div>
+
+		<a href="{{ redirect_url }}" id="sign-in">Sign in</a>
+
+		<div id="bubbles" class="hidden">
+
+		</div>
+		<div class="loading-wrapper hidden">
+			<h2>This might take a while</h2>
+		</div>
+
+		<div id="result" class="hidden">
+			<div class="text-wrapper">
+				<h1>Your twitter is <em>moderately</em> toxic</h1>
+				<div class="results-table">
+					<div class="results-col results--good">
+						<h3>Good guys</h3>
+						<ul id="good-results">
+							<li>@JanKvasnicka</li>
+							<li>@Rezac</li>
+							<li>@dafidvor</li>
+							<li>@lumirkajnar</li>
+						</ul>
+					</div>
+					<div class="results-col results--bad">
+						<h3>Bad guys</h3>
+						<ul id="bad-results">
+							<li>@HairForceOne</li>
+							<li>@HoVa86</li>
+							<li>@Cojsemto</li>
+							<li>@mac_attack_</li>
+						</ul>
+					</div>
+				</div>
+				<a href="#" id="share-result">Share my result</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

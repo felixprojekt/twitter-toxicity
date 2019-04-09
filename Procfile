@@ -1,0 +1,1 @@
+web: gunicorn twitter_toxicity.wsgi --log-file -

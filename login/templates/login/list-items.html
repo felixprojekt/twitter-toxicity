@@ -1,0 +1,15 @@
+<div class="results-col results--good">
+    <h3>Good guys</h3>
+    <ul id="good-results">
+    </ul>
+</div>
+<div class="results-col results--bad">
+    <h3>Bad guys</h3>
+    <ul id="bad-results">
+        {% for item in worst  %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+

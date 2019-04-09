@@ -77,18 +77,16 @@ $(function() {
 		$("#twitter-nickname-form").hide();
 		$(".loading-wrapper").hide();
 
-		var best = getBest();
-		var worst = getWorst();
 
-		console.log(best);
-		console.log(worst);
-
-		$.each(best, function(index, value) {
-			$("#good-results").append("<li>" + value + "</li>")
-		});
-
-		$.each(worst, function(index, value) {
-			$("#bad-results").append("<li>" + value + "</li>")
+		$.ajax({
+			method: "GET",
+			url: "/toxicity/insights/",
+			error: function(result) {
+				console.log(result)
+			},
+			success: function(result) {
+				$("#results-table").html(result)
+			}
 		});
 
 		$("#result").removeClass("hidden").css("z-index", 5);
@@ -124,6 +122,7 @@ $(function() {
 		sizes.sort();
 
 		console.log(sizes);
+
 		return sizes;
 	}
 

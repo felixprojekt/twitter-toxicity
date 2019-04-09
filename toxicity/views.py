@@ -3,6 +3,7 @@ import random
 
 import tweepy
 from django.http import JsonResponse
+from django.shortcuts import render
 
 
 def user_toxicity(request, user_id):
@@ -24,13 +25,34 @@ def user_toxicity(request, user_id):
 
     user = api.get_user(user_id)
 
+    toxicity = random.randint(180, 600)
+
+
+
     #tweets = api.user_timeline(user_id)
 
     #for tweet in tweets:
 
-    toxicity = {
+    result = {
         "name": user.screen_name,
-        "toxicity": random.randint(180, 600),
+        "toxicity": toxicity,
     }
 
-    return JsonResponse(toxicity, safe=False)
+    request.session['toxicity'] = result
+
+    return JsonResponse(result, safe=False)
+
+
+def insights(request):
+
+    sizes = request.session.get('toxicity')
+
+    sizes_sorted = sorted(sizes, key=lambda dct: dct['toxicity'])
+
+    worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
+
+    context = {
+        "worst": worst
+    }
+
+    return render(request, 'login/list-items.html', context)

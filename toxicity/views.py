@@ -32,17 +32,6 @@ def user_toxicity(request, user_id):
         "toxicity": toxicity,
     }
 
-    if not request.session:
-        request.session = {}
-
-    saved_list = request.session.get('toxicity', [])
-    saved_list.append(result)
-    request.session['toxicity'] = saved_list
-
-    #request.session['toxicity'] = result
-
-    #request.session['toxicity'][user.screen_name] = toxicity
-
     return JsonResponse(result, safe=False)
 
 

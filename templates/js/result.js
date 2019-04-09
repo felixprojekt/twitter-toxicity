@@ -85,7 +85,7 @@ $(function() {
 		});
 
 		$.each(worst, function(index, value) {
-			$("#bad").append("<li>" + value + "</li>")
+			$("#bad-results").append("<li>" + value + "</li>")
 		});
 
 		$("#result").removeClass("hidden").css("z-index", 5);

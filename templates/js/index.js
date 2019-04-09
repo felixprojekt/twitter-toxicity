@@ -1,5 +1,6 @@
-$( window ).load(function() {
-  $("body").removeClass("loading");
+$(function() {
+    $( window ).load(function() {
+      $("body").removeClass("loading");
+    });
 });
-
 

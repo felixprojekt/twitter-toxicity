@@ -64,7 +64,7 @@ body {
 	letter-spacing: 1px;
 	position: relative;
 
-	@include animation(Gradient, 5s, infinite, ease);
+	//@include animation(Gradient, 5s, infinite, ease);
 }
 
 .wrapper {

@@ -50,13 +50,8 @@ $(function() {
 
 				}
 			});
-		});
+		}).promise().done(showFinalResults());
 
-		var request_time = new Date().getTime() - start_time;
-
-		setTimeout(function() {
-			showFinalResults()
-		}, request_time);
     	window.history.replaceState('', '', window.location.href.split("?")[0]);
 	} else {
 		window.location.replace("/");

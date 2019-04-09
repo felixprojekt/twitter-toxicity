@@ -61,8 +61,9 @@ $(function() {
 						createBubble(result.name, result.toxicity / 3);
 					}
 
-					len -= 1
+					len -= 1;
 
+					console.log(len);
 				}
 			});
 

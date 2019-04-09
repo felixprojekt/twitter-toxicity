@@ -46,7 +46,7 @@ $(function() {
 					}, 100);
 				},
 				error: function(result) {
-					console.log(result);
+					console.log(result.responseText);
 				},
 				success: function(result) {
 

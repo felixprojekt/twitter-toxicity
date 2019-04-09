@@ -60,8 +60,6 @@ $(function() {
 			}
 		});
 
-		setTimeout(showFinalResults(), )
-
     	window.history.replaceState('', '', window.location.href.split("?")[0]);
 	} else {
 		window.location.replace("/");

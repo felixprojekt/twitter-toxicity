@@ -88,7 +88,7 @@ $(function() {
 
 	function createBubble(name, size, timeout = 100) {
 		var div = document.createElement("div");
-		var top = 100 + randBetween(0,50);
+		var top = 100 + randBetween(0,65);
 
 		div.innerHTML = name;
 		div.style.left = randBetween(0, 90) + "%";

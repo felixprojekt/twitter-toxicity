@@ -51,7 +51,7 @@ $(function() {
 				success: function(result) {
 
 					var request_time = new Date().getTime() - start_time;
-					//console.log("fetched " + id + " loaded in " + request_time + " ms");
+					console.log("fetched " + id + " loaded in " + request_time + " ms");
 
 					//console.log("name: " + result.name + " toxicity: " + result.toxicity);
 

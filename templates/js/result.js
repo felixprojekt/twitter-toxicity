@@ -22,7 +22,7 @@ $(function() {
 
 		var ids = $("#ids");
 
-		var len = ids.children().length;
+		var len = ids.children("span").length;
 
 		console.log("length: " + len);
 

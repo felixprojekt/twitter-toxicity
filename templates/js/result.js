@@ -24,6 +24,8 @@ $(function() {
 
 		var len = ids.children().length;
 
+		console.log("length: " + len);
+
 		ids.children("span").each(function() {
 			var id = $(this).text();
 			$.ajax({
@@ -58,8 +60,15 @@ $(function() {
 					if(result.toxicity > 580) {
 						createBubble(result.name, result.toxicity / 3);
 					}
+
+					len -= 1
+
 				}
 			});
+
+			if(len < 2) {
+				showFinalResults();
+			}
 		});
 
     	window.history.replaceState('', '', window.location.href.split("?")[0]);
@@ -67,16 +76,11 @@ $(function() {
 		window.location.replace("/");
 	}
 
-	$(document).ajaxStop(function () {
-		  showFinalResults();
-	});
-
 	function showFinalResults() {
 		$("#intro").hide();
 		$("#sign-in").hide();
 		$("#twitter-nickname-form").hide();
 		$(".loading-wrapper").hide();
-
 
 		$.ajax({
 			method: "GET",

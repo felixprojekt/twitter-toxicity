@@ -47,7 +47,6 @@ def insights(request):
 
     context = {
         "worst": sizes,
-        "hey": pprint(sizes)
     }
 
     return render(request, 'login/list-items.html', context)

@@ -38,8 +38,9 @@ $(function() {
 					$("#sign-in").addClass("hidden");
 
 					setTimeout(function() {
-						$(".loading-wrapper").removeClass("hidden").addClass("pulse");
+						$(".loading-wrapper").removeClass("hidden");
 
+						$("#loading-name").addClass("pulse")
 					}, 100);
 				},
 				error: function(result) {
@@ -51,6 +52,7 @@ $(function() {
 					//console.log("fetched " + id + " loaded in " + request_time + " ms");
 
 					//console.log("name: " + result.name + " toxicity: " + result.toxicity);
+
 
 					if(result.toxicity > 320) {
 						createBubble(result.name, result.toxicity / 2);

@@ -221,6 +221,11 @@ input:-webkit-autofill {
 	h2 {
 		margin-top: 0px;
 	}
+
+
+}
+
+#loading-name {
 	&.pulse {
 		@include animation(pulse, 2s, infinite);
 	}

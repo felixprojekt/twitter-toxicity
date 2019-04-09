@@ -115,7 +115,7 @@ $(function() {
 	}
 
 	function getSizes() {
-		var sizes = [];
+		var sizes = {};
 
 		$("#bubbles").each(function() {
 			sizes[$(this).data("size")] = $(this).text();

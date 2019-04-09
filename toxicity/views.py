@@ -47,12 +47,12 @@ def insights(request):
 
     sizes = request.session.get('toxicity')
 
-    sizes_sorted = sorted(sizes, key=lambda dct: dct['toxicity'])
+    # sizes_sorted = sorted(sizes, key=lambda dct: dct['toxicity'])
 
-    worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
+    # worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
 
     context = {
-        "worst": worst
+        "worst": sizes
     }
 
     return render(request, 'login/list-items.html', context)

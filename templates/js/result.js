@@ -80,7 +80,7 @@ $(function() {
 
 		$.ajax({
 			method: "GET",
-			url: "/toxicity/insights/",
+			url: "/toxicity/insights",
 			error: function(result) {
 				console.log(result)
 			},

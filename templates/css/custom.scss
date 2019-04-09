@@ -64,12 +64,20 @@ body {
 	letter-spacing: 1px;
 	position: relative;
 
+	&.loading {
+		.wrapper {
+			opacity: 0;
+			transition: .4s opacity;
+		}
+	}
+
 	//@include animation(Gradient, 5s, infinite, ease);
 }
 
 .wrapper {
 	padding: 6% 10% 10%;
 	height: calc(100vh - 18px);
+	opacity: 1;
 }
 
 div {

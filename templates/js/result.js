@@ -25,7 +25,7 @@ $(function() {
 		var len = ids.children().length;
 
 		ids.children("span").each(function() {
-			var id = $(this).html();
+			var id = $(this).text();
 			$.ajax({
 				method: "GET",
 				url: "/toxicity/" + id + "/",
@@ -96,6 +96,11 @@ $(function() {
 		$("#sign-in").hide();
 		$("#twitter-nickname-form").hide();
 		$(".loading-wrapper").hide();
+
+		$("#good-results").html(getBest());
+
+		$("#bad-results").html(getWorst());
+
 		$("#result").removeClass("hidden").css("z-index", 5);
 		$("#bubbles").css("opacity", ".1").css("z-index", 1);
 		$("#bubbles div").css("color", "transparent");
@@ -110,12 +115,38 @@ $(function() {
 		div.style.top = top + "%";
 		div.style.width = size + "px";
 		div.style.height = size + "px";
-		div.setAttribute("class", "animated jello slow")
+		div.setAttribute("class", "animated jello slow");
+		div.setAttribute("data-size", size);
 
 		setTimeout(function() {
 			document.getElementById("bubbles").appendChild(div);
 		}, timeout);
 		
+	}
+
+	function getSizes() {
+		var sizes = [];
+
+		$("#bubbles").each(function() {
+			sizes[$(this).data("size")] = $(this).text();
+		});
+
+		sizes.sort();
+
+		return sizes;
+	}
+
+	function getWorst() {
+		var sizes = getSizes();
+		var length = sizes.length;
+
+		return sizes.slice(length - 5, length);
+	}
+
+	function getBest() {
+		var sizes = getSizes();
+
+		return sizes.slice(0, 5);
 	}
 
 	/*

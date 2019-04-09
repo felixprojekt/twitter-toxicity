@@ -77,9 +77,16 @@ $(function() {
 		$("#twitter-nickname-form").hide();
 		$(".loading-wrapper").hide();
 
-		$("#good-results").html(getBest());
+		var best = getBest();
+		var worst = getWorst();
 
-		$("#bad-results").html(getWorst());
+		$.each(best, function(index, value) {
+			$("#good-results").append("<li>" + value + "</li>")
+		});
+
+		$.each(worst, function(index, value) {
+			$("#bad").append("<li>" + value + "</li>")
+		});
 
 		$("#result").removeClass("hidden").css("z-index", 5);
 		$("#bubbles").css("opacity", ".1").css("z-index", 1);

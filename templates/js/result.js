@@ -123,6 +123,7 @@ $(function() {
 
 		sizes.sort();
 
+		console.log(sizes);
 		return sizes;
 	}
 

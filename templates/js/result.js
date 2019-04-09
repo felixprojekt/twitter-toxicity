@@ -53,8 +53,9 @@ $(function() {
 
 					//console.log("name: " + result.name + " toxicity: " + result.toxicity);
 
+					$("#loading-name").html("@" + result.name);
 
-					if(result.toxicity > 320) {
+					if(result.toxicity > 370) {
 						createBubble(result.name, result.toxicity / 2);
 					}
 				}

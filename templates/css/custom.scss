@@ -226,6 +226,8 @@ input:-webkit-autofill {
 }
 
 #loading-name {
+	color: white;
+
 	&.pulse {
 		@include animation(pulse, 2s, infinite);
 	}

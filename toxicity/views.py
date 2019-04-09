@@ -35,7 +35,7 @@ def user_toxicity(request, user_id):
     if not 'toxicity' in request.session or not request.session['toxicity']:
         request.session['toxicity'] = result
     else:
-        request.session['toxicity'].append(result);
+        request.session['toxicity'].append(result)
 
     #request.session['toxicity'] = result
 

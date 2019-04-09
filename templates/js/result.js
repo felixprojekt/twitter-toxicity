@@ -80,6 +80,9 @@ $(function() {
 		var best = getBest();
 		var worst = getWorst();
 
+		console.log(best);
+		console.log(worst);
+
 		$.each(best, function(index, value) {
 			$("#good-results").append("<li>" + value + "</li>")
 		});

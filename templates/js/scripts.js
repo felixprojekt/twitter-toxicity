@@ -22,7 +22,7 @@ $(function() {
 
 		var len = ids.children().length;
 
-		ids.children("span").each(function(index) {
+		ids.children("span").each(function() {
 			var id = $(this).html();
 			$.ajax({
 				method: "GET",
@@ -46,7 +46,7 @@ $(function() {
 				success: function(result) {
 
 					var request_time = new Date().getTime() - start_time;
-					console.log("fetched " + id + " loaded in " + request_time + " ms");
+					//console.log("fetched " + id + " loaded in " + request_time + " ms");
 
 					console.log("name: " + result.name + " toxicity: " + result.toxicity);
 
@@ -55,16 +55,16 @@ $(function() {
 					}
 				}
 			});
-
-			if(index === (len - 1)) {
-				showFinalResults();
-			}
 		});
 
     	window.history.replaceState('', '', window.location.href.split("?")[0]);
 	} else {
 		window.location.replace("/");
 	}
+
+	$(document).ajaxStop(function () {
+		  showFinalResults();
+	});
 
 	function launchBeta() {
 		$("#bubbles").removeClass("hidden");

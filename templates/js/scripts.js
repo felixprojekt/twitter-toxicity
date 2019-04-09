@@ -18,7 +18,11 @@ $(function() {
 
 		var start_time = new Date().getTime();
 
-		$("#ids").children("span").each(function() {
+		var ids = $("#ids");
+
+		var len = ids.children().length;
+
+		ids.children("span").each(function(index) {
 			var id = $(this).html();
 			$.ajax({
 				method: "GET",
@@ -50,7 +54,13 @@ $(function() {
 
 				}
 			});
-		}).promise().done(showFinalResults());
+
+			if(index === (len - 1)) {
+				showFinalResults();
+			}
+		});
+
+		setTimeout(showFinalResults(), )
 
     	window.history.replaceState('', '', window.location.href.split("?")[0]);
 	} else {

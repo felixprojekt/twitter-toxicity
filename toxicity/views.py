@@ -1,6 +1,6 @@
 import os
 import random
-
+from pprint import pprint
 import tweepy
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -46,7 +46,8 @@ def insights(request):
     # worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
 
     context = {
-        "worst": sizes
+        "worst": sizes,
+        "hey": pprint(sizes)
     }
 
     return render(request, 'login/list-items.html', context)

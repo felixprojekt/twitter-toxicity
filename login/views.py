@@ -41,7 +41,7 @@ def result(request):
     api = tweepy.API(auth)
 
     context = {
-        "ids": api.followers_ids()
+        "ids": api.friends_ids()
     }
 
     return render(request, 'login/result.html', context)

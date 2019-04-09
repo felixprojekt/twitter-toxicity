@@ -1,5 +1,7 @@
 $(function() {
 
+	$("body").removeClass("loading");
+
 	$.urlParam = function(name){
 		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 		if(results) {
@@ -50,7 +52,7 @@ $(function() {
 
 					//console.log("name: " + result.name + " toxicity: " + result.toxicity);
 
-					if(result.toxicity > 140) {
+					if(result.toxicity > 180) {
 						createBubble(result.name, result.toxicity);
 					}
 				}

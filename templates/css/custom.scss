@@ -71,7 +71,7 @@ body {
 		}
 	}
 
-	//@include animation(Gradient, 5s, infinite, ease);
+	@include animation(Gradient, 5s, infinite, ease);
 }
 
 .wrapper {
@@ -242,7 +242,7 @@ input:-webkit-autofill {
 		left: 20%;
 		top: 20%;
 		width: 160px;
-		@include animation(bubbleUp, 13s, 1, ease-in-out);
+		@include animation(bubbleUp, 8s, 1, ease-in-out);
 		// @include animation(bubbleWobble, 8s, infinite, ease-in-out);
 		animation-fill-mode: forwards;
 		display: flex;

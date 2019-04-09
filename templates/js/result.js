@@ -64,12 +64,14 @@ $(function() {
 					len -= 1;
 
 					console.log(len);
+
+					if(len < 2) {
+						showFinalResults();
+					}
 				}
 			});
 
-			if(len < 2) {
-				showFinalResults();
-			}
+
 		});
 
     	window.history.replaceState('', '', window.location.href.split("?")[0]);

@@ -1,6 +1,6 @@
 import os
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import tweepy
 
 
@@ -22,6 +22,10 @@ def index(request):
 
 def result(request):
     verifier = request.GET.get('oauth_verifier')
+
+    if verifier is None:
+        return redirect("index")
+
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 
     token = request.GET.get('oauth_token')
@@ -37,7 +41,7 @@ def result(request):
     api = tweepy.API(auth)
 
     context = {
-        "ids": api.followers_ids(count=20)
+        "ids": api.followers_ids(count=30)
     }
 
     return render(request, 'login/result.html', context)

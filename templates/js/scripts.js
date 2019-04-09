@@ -50,8 +50,9 @@ $(function() {
 
 					console.log("name: " + result.name + " toxicity: " + result.toxicity);
 
-					createBubble(result.name, result.toxicity);
-
+					if(result.toxicity > 120) {
+						createBubble(result.name, result.toxicity);
+					}
 				}
 			});
 

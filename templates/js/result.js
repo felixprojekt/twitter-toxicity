@@ -52,8 +52,8 @@ $(function() {
 
 					//console.log("name: " + result.name + " toxicity: " + result.toxicity);
 
-					if(result.toxicity > 180) {
-						createBubble(result.name, result.toxicity);
+					if(result.toxicity > 320) {
+						createBubble(result.name, result.toxicity / 2);
 					}
 				}
 			});
@@ -67,29 +67,6 @@ $(function() {
 	$(document).ajaxStop(function () {
 		  showFinalResults();
 	});
-
-	function launchBeta() {
-		$("#bubbles").removeClass("hidden");
-
-		var sizes = [90, 200, 170, 120, 80, 140, 70, 120, 90, 120, 80];
-		var names = ["@POTUS", "@HairForceOne", "@HoVa86", "@mac_attack_", "@_youhadonejob1", "@Cojsemto", "@aritHeta", "@measure_one", "@pleasedth", "@thankunxt", "@JonathanIve"];
-		console.log(names);
-
-		var timeout = 3000;
-
-		for(var i = 0; i < sizes.length; i++) {
-
-			createBubble(names[i], sizes[i], timeout);
-
-			timeout = timeout + randBetween(1000, 2000);
-		}
-
-		timeout = timeout + 8000;
-
-		setTimeout(function(){
-			showFinalResults();
-		}, timeout);
-	}
 
 	function showFinalResults() {
 		$("#intro").hide();

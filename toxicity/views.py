@@ -30,7 +30,7 @@ def user_toxicity(request, user_id):
 
     toxicity = {
         "name": user.screen_name,
-        "toxicity": random.randint(90, 190),
+        "toxicity": random.randint(180, 400),
     }
 
     return JsonResponse(toxicity, safe=False)

@@ -85,6 +85,7 @@ $(function() {
 				console.log(result)
 			},
 			success: function(result) {
+				console.log(result);
 				$("#results-table").html(result)
 			}
 		});

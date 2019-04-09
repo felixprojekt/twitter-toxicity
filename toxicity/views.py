@@ -27,8 +27,6 @@ def user_toxicity(request, user_id):
 
     toxicity = random.randint(180, 600)
 
-
-
     #tweets = api.user_timeline(user_id)
 
     #for tweet in tweets:
@@ -38,7 +36,7 @@ def user_toxicity(request, user_id):
         "toxicity": toxicity,
     }
 
-    request.session['toxicity'] = result
+    request.session['toxicity'].append(result)
 
     return JsonResponse(result, safe=False)
 

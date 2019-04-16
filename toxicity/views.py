@@ -27,7 +27,7 @@ def user_toxicity(request, user_id):
     toxicities = list()
 
     for tweet in api.user_timeline(user_id=user_id, count=2):
-        toxicities.append(analyze_tweet(request, tweet.text))
+        toxicities.append(analyze_tweet(request))
 
     toxicity = sum(toxicities) / len(toxicities)
 
@@ -39,7 +39,7 @@ def user_toxicity(request, user_id):
     return JsonResponse(result, safe=False)
 
 
-def analyze_tweet(request, tweet_text):
+def analyze_tweet(request):
     d = {
         'comment': {
             'text': "this is so stupid!!!"

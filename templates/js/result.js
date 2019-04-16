@@ -57,7 +57,7 @@ $(function() {
 					$("#loading-name").html("@" + result.name);
 
 					if(result.toxicity > 150) {
-						createBubble(result.name, result.toxicity);
+						createBubble(result.name, result.toxicity * 1.5);
 					}
 
 					len -= 1;
@@ -65,12 +65,10 @@ $(function() {
 					if(len < 1) {
 						setTimeout(function() {
 							showFinalResults();
-						}, 4000)
+						}, 3000)
 					}
 				}
 			});
-
-
 		});
 
     	window.history.replaceState('', '', window.location.href.split("?")[0]);

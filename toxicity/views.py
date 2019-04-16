@@ -38,7 +38,7 @@ def user_toxicity(request, user_id):
     return JsonResponse(result, safe=False)
 
 
-def analyze_tweet(request, tweet):
+def analyze_tweet(request):
     params = {
         'comment': {
             'text': 'what a stupid question...',

@@ -26,23 +26,23 @@ def user_toxicity(request, user_id):
     toxicities = list()
 
     for tweet in api.user_timeline(user_id=user_id, count=2):
-        r = str(analyze_tweet(request))
-        # toxicities.append(float(r))
+        r = str(analyze_tweet(request, tweet.text))
+        toxicities.append(float(r))
 
-    # toxicity = sum(toxicities) / len(toxicities)
+    toxicity = sum(toxicities) / len(toxicities)
 
     result = {
         "name": user.screen_name,
-        "toxicity": r,
+        "toxicity": toxicity,
     }
 
     return JsonResponse(result, safe=False)
 
 
-def analyze_tweet(request):
+def analyze_tweet(request, tweet_text):
     d = {
         'comment': {
-            'text': "this is so stupid!!!"
+            'text': tweet_text
         },
         'languages': ['en'],
         'requestedAttributes': {

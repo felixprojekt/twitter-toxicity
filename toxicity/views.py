@@ -1,3 +1,4 @@
+import logging
 import os
 import requests
 import tweepy
@@ -28,7 +29,9 @@ def user_toxicity(request, user_id):
     for tweet in api.user_timeline(user_id=user_id, count=2):
         toxicities.append(analyze_tweet(request, tweet.text))
 
-    print(toxicities)
+    # print(toxicities)
+
+    logging.debug(toxicities)
 
     toxicity = sum(toxicities) / len(toxicities)
 

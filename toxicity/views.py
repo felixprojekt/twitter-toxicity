@@ -1,6 +1,4 @@
 import os
-import sys
-
 import requests
 import tweepy
 from django.http import JsonResponse
@@ -31,8 +29,6 @@ def user_toxicity(request, user_id):
         toxicities.append(analyze_tweet(request, tweet.text))
 
     print(toxicities)
-
-    sys.exit()
 
     toxicity = sum(toxicities) / len(toxicities)
 

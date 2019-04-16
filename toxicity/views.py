@@ -42,7 +42,7 @@ def user_toxicity(request, user_id):
 def analyze_tweet(request, tweet_text):
     d = {
         'comment': {
-            'text': tweet_text
+            'text': "this is so stupid!!!"
         },
         'languages': ['en'],
         'requestedAttributes': {

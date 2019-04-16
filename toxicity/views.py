@@ -4,7 +4,6 @@ import requests
 import tweepy
 from django.http import JsonResponse
 from django.shortcuts import render
-from pprint import pprint
 
 
 def user_toxicity(request, user_id):
@@ -30,11 +29,10 @@ def user_toxicity(request, user_id):
     for tweet in api.user_timeline(user_id=user_id, count=2):
         toxicities.append(analyze_tweet(request, tweet.text))
 
-    pprint(vars(toxicities))
+    for x in range(len(toxicities)):
+        print(toxicities[x])
 
     toxicity = sum(toxicities) / len(toxicities)
-
-
 
     result = {
         "name": user.screen_name,

@@ -39,7 +39,7 @@ def user_toxicity(request, user_id):
 
 
 def analyze_tweet(request):
-    payload = {
+    d = {
         'comment': {
             'text': 'this is such a stupid idea!!'
         },
@@ -49,12 +49,15 @@ def analyze_tweet(request):
         }
     }
 
+    para = {
+        "key": os.environ['PERSPECTIVE_KEY']
+    }
+
     headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
     r = requests.post(
-        "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" +
-        os.environ['PERSPECTIVE_KEY'],
-        params=payload,
-        headers=headers)
+        "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze",
+        params=para,
+        headers=headers, json=d)
     return JsonResponse(r.json(), safe=False)
 
 

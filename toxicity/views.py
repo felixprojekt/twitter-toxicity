@@ -29,7 +29,9 @@ def user_toxicity(request, user_id):
         r = str(analyze_tweet(request, tweet.text))
         toxicities.append(float(r))
 
-    toxicity = sum(toxicities) / len(toxicities)
+    average = sum(toxicities) / len(toxicities)
+
+    toxicity = average * 200
 
     result = {
         "name": user.screen_name,

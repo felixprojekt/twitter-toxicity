@@ -24,7 +24,14 @@ $(function() {
 
 		var len = ids.children("span").length;
 
-		console.log("length: " + len);
+		$("#intro").addClass("hidden");
+		$("#sign-in").addClass("hidden");
+
+		setTimeout(function() {
+			$(".loading-wrapper").removeClass("hidden");
+
+			$("#loading-name").addClass("pulse")
+		}, 100);
 
 		ids.children("span").each(function() {
 			var id = $(this).text();
@@ -36,14 +43,7 @@ $(function() {
 					"verifier": verifier
 				},
 				beforeSend: function(result) {
-					$("#intro").addClass("hidden");
-					$("#sign-in").addClass("hidden");
 
-					setTimeout(function() {
-						$(".loading-wrapper").removeClass("hidden");
-
-						$("#loading-name").addClass("pulse")
-					}, 100);
 				},
 				error: function(result) {
 					console.log(result.responseText);
@@ -53,12 +53,10 @@ $(function() {
 					var request_time = new Date().getTime() - start_time;
 					console.log("fetched " + id + " loaded in " + request_time + " ms");
 
-					//console.log("name: " + result.name + " toxicity: " + result.toxicity);
-
 					$("#loading-name").html("@" + result.name);
 
-					if(result.toxicity > 550) {
-						createBubble(result.name, result.toxicity / 3);
+					if(result.toxicity > 150) {
+						createBubble(result.name, result.toxicity);
 					}
 
 					len -= 1;

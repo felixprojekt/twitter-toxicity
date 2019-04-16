@@ -53,7 +53,8 @@ def analyze_tweet(request):
 
     headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
     r = requests.post(
-        "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?referrer=twitter-toxicity.herokuapp.com&key=" + os.environ['PERSPECTIVE_KEY'],
+        "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" +
+        os.environ['PERSPECTIVE_KEY'],
         data=params,
         headers=headers)
     return JsonResponse(r.json(), safe=False)

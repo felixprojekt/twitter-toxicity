@@ -5,6 +5,9 @@
         <li>@Rezac</li>
         <li>@dafidvor</li>
         <li>@lumirkajnar</li>
+        {% for item in worst %}
+            {{ item.name }} {{ item.toxicity }}
+        {% endfor %}
     </ul>
 </div>
 <div class="results-col results--bad">

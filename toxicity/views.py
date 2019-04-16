@@ -40,6 +40,8 @@ def user_toxicity(request, user_id):
         "toxicity": toxicity,
     }
 
+    request.session['toxicities'].append(result)
+
     return JsonResponse(result, safe=False)
 
 
@@ -69,15 +71,16 @@ def analyze_tweet(request, tweet_text):
     else:
         return False
 
-def insights(request):
-    sizes = request.session.get('toxicity')
 
-    # sizes_sorted = sorted(sizes, key=lambda dct: dct['toxicity'])
+def insights(request):
+    results = request.session.get('toxicities')
+
+    worst = sorted(results, key=lambda dct: dct['toxicity'])
 
     # worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
 
     context = {
-        "worst": sizes,
+        "worst": worst,
     }
 
     return render(request, 'login/list-items.html', context)

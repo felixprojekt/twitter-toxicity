@@ -1,9 +1,8 @@
-import logging
 import os
 import requests
 import tweepy
 import json
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 
@@ -29,8 +28,7 @@ def user_toxicity(request, user_id):
 
     for tweet in api.user_timeline(user_id=user_id, count=2):
         r = analyze_tweet(request)
-        number = json.loads(r)
-        toxicities.append(int(number))
+        toxicities.append(int(r))
 
     toxicity = sum(toxicities) / len(toxicities)
 

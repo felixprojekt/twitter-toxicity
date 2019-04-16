@@ -3,7 +3,7 @@ $(function() {
 	$("body").removeClass("loading");
 
 	$.urlParam = function(name){
-		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		const results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 		if(results) {
 			return results[1]
 		} else {
@@ -11,18 +11,18 @@ $(function() {
 		}
 	}
 
-	var token = $.urlParam('oauth_token');
-	var verifier = $.urlParam('oauth_verifier');
+	const token = $.urlParam('oauth_token');
+	const verifier = $.urlParam('oauth_verifier');
 
 	if(token && verifier) {
 
 		$("#bubbles").removeClass("hidden");
 
-		var start_time = new Date().getTime();
+		const start_time = new Date().getTime();
 
-		var ids = $("#ids");
+		const ids = $("#ids");
 
-		var len = ids.children("span").length;
+		const len = ids.children("span").length;
 
 		$("#intro").addClass("hidden");
 		$("#sign-in").addClass("hidden");
@@ -34,7 +34,7 @@ $(function() {
 		}, 100);
 
 		ids.children("span").each(function() {
-			var id = $(this).text();
+			const id = $(this).text();
 			$.ajax({
 				method: "GET",
 				url: "/toxicity/" + id + "/",

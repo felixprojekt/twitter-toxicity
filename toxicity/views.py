@@ -40,8 +40,6 @@ def user_toxicity(request, user_id):
         "toxicity": toxicity,
     }
 
-    request.session['toxicities'].append(result)
-
     return JsonResponse(result, safe=False)
 
 

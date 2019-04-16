@@ -2,7 +2,8 @@ import logging
 import os
 import requests
 import tweepy
-from django.http import JsonResponse
+import json
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 
 
@@ -27,7 +28,9 @@ def user_toxicity(request, user_id):
     toxicities = list()
 
     for tweet in api.user_timeline(user_id=user_id, count=2):
-        toxicities.append(analyze_tweet(request))
+        r = analyze_tweet(request)
+        number = json.loads(r)
+        toxicities.append(int(number))
 
     toxicity = sum(toxicities) / len(toxicities)
 
@@ -60,7 +63,7 @@ def analyze_tweet(request):
         params=para,
         headers=headers, json=d)
 
-    return int(r.json()['attributeScores']['TOXICITY']['summaryScore']['value'])
+    return JsonResponse(r.json()['attributeScores']['TOXICITY']['summaryScore']['value'])
 
 
 def insights(request):

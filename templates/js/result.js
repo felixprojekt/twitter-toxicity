@@ -35,7 +35,7 @@ $(function() {
 					"token": token,
 					"verifier": verifier
 				},
-				beforeSend: function() {
+				beforeSend: function(result) {
 					$("#intro").addClass("hidden");
 					$("#sign-in").addClass("hidden");
 
@@ -66,7 +66,7 @@ $(function() {
 					if(len < 1) {
 						setTimeout(function() {
 							showFinalResults();
-						}, 1000)
+						}, 4000)
 					}
 				}
 			});
@@ -115,58 +115,7 @@ $(function() {
 		div.setAttribute("data-size", size);
 
 		document.getElementById("bubbles").appendChild(div);
-
 	}
-
-	function getSizes() {
-		var sizes = {};
-
-		$("#bubbles").each(function() {
-			sizes[$(this).data("size")] = $(this).text();
-		});
-
-		sizes.sort();
-
-		console.log(sizes);
-
-		return sizes;
-	}
-
-	function getWorst() {
-		var sizes = getSizes();
-		var length = sizes.length;
-
-		return sizes.slice(length - 5, length);
-	}
-
-	function getBest() {
-		var sizes = getSizes();
-
-		return sizes.slice(0, 5);
-	}
-
-	/*
-	function runTensor(name, tweets) {
-		const threshold = 0.55;
-		const labelsToMatch = ["toxicity", "insult", "severe_toxicity", "threat"];
-
-		toxicity.load(threshold, labelsToMatch).then(model => {
-		  	model.classify(tweets).then(predictions => {
-
-		  		console.log(name);
-		  		console.log(tweets);
-		    	console.log(predictions);
-
-			    // var values = [];
-
-			    // predictions[0]["results"].forEach(function(item) {
-			    // 	// values[] = item.
-			    // });
-			    
-		    	createBubble(name);
-		  	});
-		});
-	} */
 
 	function randBetween(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) + min)

@@ -1,13 +1,13 @@
 import os
 import random
-from pprint import pprint
+
+import requests
 import tweepy
 from django.http import JsonResponse
 from django.shortcuts import render
 
 
 def user_toxicity(request, user_id):
-
     verifier = request.GET.get('verifier')
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 
@@ -25,6 +25,9 @@ def user_toxicity(request, user_id):
 
     user = api.get_user(user_id)
 
+    for tweet in api.home_timeline(count=100):
+        analyze_tweet(request, tweet)
+
     toxicity = random.randint(180, 600)
 
     result = {
@@ -35,8 +38,25 @@ def user_toxicity(request, user_id):
     return JsonResponse(result, safe=False)
 
 
-def insights(request):
+def analyze_tweet(request, tweet):
+    params = {
+        'comment': {
+            'text': 'what a stupid question...',
+            'languages': {
+                'en'
+            },
+            'requestedAttributes': {
+                'TOXICITY': ''
+            }
+        }
+    }
 
+    headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
+    r = requests.post("https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=", data=params, headers=headers)
+    return JsonResponse(r.json(), safe=False)
+
+
+def insights(request):
     sizes = request.session.get('toxicity')
 
     # sizes_sorted = sorted(sizes, key=lambda dct: dct['toxicity'])

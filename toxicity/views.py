@@ -1,7 +1,6 @@
 import os
 import requests
 import tweepy
-import json
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 
@@ -61,7 +60,7 @@ def analyze_tweet(request):
         params=para,
         headers=headers, json=d)
 
-    return HttpResponse(r.json()['attributeScores']['TOXICITY']['summaryScore']['value'])
+    return r.json()['attributeScores']['TOXICITY']['summaryScore']['value']
 
 
 def insights(request):
@@ -76,3 +75,4 @@ def insights(request):
     }
 
     return render(request, 'login/list-items.html', context)
+

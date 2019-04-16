@@ -6,5 +6,6 @@ from . import views
 
 urlpatterns = [
     path('insights/', views.insights, name='insights'),
+    path('analyze_tweet/', views.analyze_tweet, name='analyze_tweet'),
     path('<int:user_id>/', views.user_toxicity, name='user_toxicity'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

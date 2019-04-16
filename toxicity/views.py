@@ -25,7 +25,7 @@ def user_toxicity(request, user_id):
 
     user = api.get_user(user_id)
 
-    for tweet in api.home_timeline(count=100):
+    for tweet in api.home_timeline(count=10):
         analyze_tweet(request, tweet)
 
     toxicity = random.randint(180, 600)
@@ -52,7 +52,8 @@ def analyze_tweet(request, tweet):
     }
 
     headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
-    r = requests.post("https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=", data=params, headers=headers)
+    r = requests.post("https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=", data=params,
+                      headers=headers)
     return JsonResponse(r.json(), safe=False)
 
 

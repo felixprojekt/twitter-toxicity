@@ -24,14 +24,10 @@ def user_toxicity(request, user_id):
 
     user = api.get_user(user_id)
 
-    toxicities = []
+    toxicities = list()
 
     for tweet in api.user_timeline(user_id=user_id, count=2):
-        toxicities.append(analyze_tweet(request, tweet.text))
-
-    # print(toxicities)
-
-    logging.debug(toxicities)
+        toxicities.append(int(analyze_tweet(request, tweet.text)))
 
     toxicity = sum(toxicities) / len(toxicities)
 

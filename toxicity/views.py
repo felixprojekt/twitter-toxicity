@@ -25,8 +25,10 @@ def user_toxicity(request, user_id):
 
     user = api.get_user(user_id)
 
-    for tweet in api.home_timeline(count=10):
-        analyze_tweet(request, tweet)
+    toxicities = []
+
+    for tweet in api.user_timeline(user_id=user_id, count=2):
+        toxicities.append(analyze_tweet(request, tweet))
 
     toxicity = random.randint(180, 600)
 
@@ -41,7 +43,7 @@ def user_toxicity(request, user_id):
 def analyze_tweet(request):
     d = {
         'comment': {
-            'text': 'this is such a stupid idea!!'
+            'text': 'what a stupid idea'
         },
         'languages': ['en'],
         'requestedAttributes': {
@@ -58,7 +60,10 @@ def analyze_tweet(request):
         "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze",
         params=para,
         headers=headers, json=d)
-    return JsonResponse(r.json(), safe=False)
+
+    return JsonResponse(r.json().attributeScores, safe=False)
+
+    # return
 
 
 def insights(request):

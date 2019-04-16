@@ -31,7 +31,10 @@ def user_toxicity(request, user_id):
             r = str(r)
             toxicities.append(float(r))
 
-    average = sum(toxicities) / len(toxicities)
+    if len(toxicities) != 0:
+        average = sum(toxicities) / len(toxicities)
+    else:
+        average = 0
 
     toxicity = average * 200
 

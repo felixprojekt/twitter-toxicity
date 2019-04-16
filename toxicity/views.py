@@ -39,13 +39,13 @@ def user_toxicity(request, user_id):
 
 
 def analyze_tweet(request):
-    params = {
-        "comment": {
-            "text": "this is such a stupid idea!!"
+    payload = {
+        'comment': {
+            'text': 'this is such a stupid idea!!'
         },
-        "languages": ["en"],
-        "requestedAttributes": {
-            "TOXICITY": {}
+        'languages': ['en'],
+        'requestedAttributes': {
+            'TOXICITY': {}
         }
     }
 
@@ -53,7 +53,7 @@ def analyze_tweet(request):
     r = requests.post(
         "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" +
         os.environ['PERSPECTIVE_KEY'],
-        data=params,
+        params=payload,
         headers=headers)
     return JsonResponse(r.json(), safe=False)
 

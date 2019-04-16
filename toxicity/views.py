@@ -51,7 +51,7 @@ def analyze_tweet(request):
 
     headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
     r = requests.post(
-        "https://commentanalyzer.googleapis.com/v1alpha1/comments.analyze?key=" +
+        "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" +
         os.environ['PERSPECTIVE_KEY'],
         data=params,
         headers=headers)

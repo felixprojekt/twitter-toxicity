@@ -56,8 +56,8 @@ $(function() {
 
 					$("#loading-name").html("@" + result.name);
 
-					if(result.toxicity > 150) {
-						createBubble(result.name, result.toxicity * 1.5);
+					if(result.toxicity > 100) {
+						createBubble(result.name, result.toxicity * 1.8);
 					}
 
 					len -= 1;

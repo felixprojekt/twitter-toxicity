@@ -42,9 +42,6 @@ def analyze_tweet(request):
     params = {
         'comment': {
             'text': 'what a stupid question...',
-            'languages': {
-                'en'
-            },
             'requestedAttributes': {
                 'TOXICITY': ''
             }

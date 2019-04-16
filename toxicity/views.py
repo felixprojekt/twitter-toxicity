@@ -27,14 +27,14 @@ def user_toxicity(request, user_id):
     toxicities = list()
 
     for tweet in api.user_timeline(user_id=user_id, count=2):
-        r = str(analyze_tweet(request))
-        toxicities.append(float(r))
+        r = analyze_tweet(request)
+        # toxicities.append(float(r))
 
-    toxicity = sum(toxicities) / len(toxicities)
+    # toxicity = sum(toxicities) / len(toxicities)
 
     result = {
         "name": user.screen_name,
-        "toxicity": toxicity,
+        "toxicity": r,
     }
 
     return JsonResponse(result, safe=False)

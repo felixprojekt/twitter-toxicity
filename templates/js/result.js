@@ -9,7 +9,7 @@ $(function() {
 		} else {
 			return null;
 		}
-	}
+	};
 
 	const token = $.urlParam('oauth_token');
 	const verifier = $.urlParam('oauth_verifier');
@@ -22,7 +22,7 @@ $(function() {
 
 		const ids = $("#ids");
 
-		const len = ids.children("span").length;
+		let len = ids.children("span").length;
 
 		$("#intro").addClass("hidden");
 		$("#sign-in").addClass("hidden");
@@ -101,8 +101,8 @@ $(function() {
 	}
 
 	function createBubble(name, size) {
-		var div = document.createElement("div");
-		var top = 100 + randBetween(0,65);
+		const div = document.createElement("div");
+		const top = 100 + randBetween(0,65);
 
 		div.innerHTML = name;
 		div.style.left = randBetween(0, 90) + "%";

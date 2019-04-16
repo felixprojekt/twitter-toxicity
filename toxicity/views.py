@@ -41,10 +41,13 @@ def user_toxicity(request, user_id):
 def analyze_tweet(request):
     params = {
         'comment': {
-            'text': 'what a stupid question...',
-            'requestedAttributes': {
-                'TOXICITY': ''
-            }
+            'text': 'what a stupid question...'
+        },
+        'languages': {
+            'en'
+        },
+        'requestedAttributes': {
+            'TOXICITY': {}
         }
     }
 

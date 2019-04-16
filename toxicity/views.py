@@ -27,7 +27,7 @@ def user_toxicity(request, user_id):
     toxicities = list()
 
     for tweet in api.user_timeline(user_id=user_id, count=2):
-        r = analyze_tweet(request)
+        r = str(analyze_tweet(request))
         # toxicities.append(float(r))
 
     # toxicity = sum(toxicities) / len(toxicities)

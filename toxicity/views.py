@@ -63,9 +63,9 @@ def analyze_tweet(request):
 
     # return JsonResponse(r.json(), safe=False)
 
-    rjson = r.json()
+    res = r.json()
 
-    return rjson['attributeScores']
+    return JsonResponse(res['attributeScores'], safe=False)
 
 
 def insights(request):

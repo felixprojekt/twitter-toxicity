@@ -27,8 +27,10 @@ def user_toxicity(request, user_id):
     toxicities = list()
 
     for tweet in api.user_timeline(user_id=user_id, count=3):
+        print('Analyzing: ' + tweet.text)
         r = analyze_tweet(request, tweet.text)
         if r:
+            print(r)
             r = str(r)
             toxicities.append(float(r))
 

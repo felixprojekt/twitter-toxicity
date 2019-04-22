@@ -29,7 +29,7 @@ def result(request):
 
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 
-    token = request.GET.get('oauth_token')  # this can be issue
+    token = request.GET.get('oauth_token')
     # token = request.session['request_token']
     # request.session.delete('request_token')
 

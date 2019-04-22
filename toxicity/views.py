@@ -27,7 +27,7 @@ def user_toxicity(request, user_id):
 
     toxicities = list()
 
-    for tweet in api.user_timeline(user_id=user_id, count=2):
+    for tweet in api.user_timeline(user_id=user_id, count=1):
         print('Analyzing: ' + tweet.text)
         r = analyze_tweet(request, tweet.text)
         if isinstance(r, float):
@@ -50,9 +50,11 @@ def user_toxicity(request, user_id):
     }
 
     if 'toxicities' not in request.session:
+        print("Toxicities not in session, creating list()")
         request.session['toxicities'] = list()
 
     request.session['toxicities'].append(result)
+    print("Current session value: " + json.dumps(request.session['toxicities']))
 
     return JsonResponse(result, safe=False)
 

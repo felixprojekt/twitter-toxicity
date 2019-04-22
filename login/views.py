@@ -30,10 +30,13 @@ def result(request):
 
     # token = request.GET.get('oauth_token') # this can be issue
     token = request.session['request_token']
-    # request.session.delete('request_token')
+    request.session.delete('request_token')
 
-    auth.request_token = {'oauth_token': token,
-                          'oauth_token_secret': verifier}
+    try:
+        auth.request_token = {'oauth_token': token,
+                              'oauth_token_secret': verifier}
+    except tweepy.TweepError:
+        print('Error! Failed to get request_token.')
 
     try:
         auth.get_access_token(verifier)

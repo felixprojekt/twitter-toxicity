@@ -1,6 +1,7 @@
 import os
 import requests
 import tweepy
+import json
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -29,7 +30,11 @@ def user_toxicity(request, user_id):
     for tweet in api.user_timeline(user_id=user_id, count=3):
         print('Analyzing: ' + tweet.text)
         r = analyze_tweet(request, tweet.text)
-        print('Result of analyze_tweet: ' + str(r))
+        if isinstance(r, str):
+            print('Result of analyze_tweet: ' + str(r))
+        elif isinstance(r, dict):
+            print('Result of analyze_tweet is object:')
+            print(json.dumps(r))
         toxicities.append(float(r))
 
     if len(toxicities) != 0:
@@ -71,7 +76,7 @@ def analyze_tweet(request, tweet_text):
     if 'attributeScores' in r.json():
         return r.json()['attributeScores']['TOXICITY']['summaryScore']['value']
     else:
-        return 0
+        return r.json()
 
 
 def insights(request):

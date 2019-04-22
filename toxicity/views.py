@@ -32,10 +32,10 @@ def user_toxicity(request, user_id):
         r = analyze_tweet(request, tweet.text)
         if isinstance(r, str):
             print('Result of analyze_tweet: ' + str(r))
+            toxicities.append(float(r))
         elif isinstance(r, dict):
             print('Result of analyze_tweet is object:')
             print(json.dumps(r))
-        toxicities.append(float(r))
 
     if len(toxicities) != 0:
         average = sum(toxicities) / len(toxicities)

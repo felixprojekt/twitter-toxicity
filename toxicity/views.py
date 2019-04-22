@@ -1,6 +1,4 @@
 import os
-import time
-
 import requests
 import tweepy
 import json
@@ -18,7 +16,7 @@ def user_toxicity(request, user_id):
     #                       'oauth_token_secret': verifier}
 
     try:
-        # auth.get_access_token(verifier)
+        # auth.get_access_token(verifier) # probably not the best idea
         auth.set_access_token(request.session['access_token'], request.session['access_token_secret'])
     except tweepy.TweepError:
         print('Error! Failed to retrieve access token from session.')
@@ -50,6 +48,11 @@ def user_toxicity(request, user_id):
         "name": user.screen_name,
         "toxicity": toxicity,
     }
+
+    if 'toxicities' not in request.session:
+        request.session['toxicities'] = list()
+
+    request.session['toxicities'].append(result)
 
     return JsonResponse(result, safe=False)
 
@@ -87,6 +90,8 @@ def insights(request):
     # worst = sorted(results, key=lambda dct: dct['toxicity'])
 
     # worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
+
+    print('Total result: ' + json.dumps(results))
 
     context = {
         "worst": results,

@@ -18,8 +18,6 @@ $(function() {
 
 		$("#bubbles").removeClass("hidden");
 
-		const start_time = new Date().getTime();
-
 		const ids = $("#ids");
 
 		let len = ids.children("span").length;
@@ -54,9 +52,7 @@ $(function() {
 					},
 					success: function(result) {
 
-						var request_time = new Date().getTime() - start_time;
-						// console.log("fetched " + id + " loaded in " + request_time + " ms");
-						console.log(id + " " + result.toxicity);
+						console.log(result.name + " " + result.toxicity);
 
 						$("#loading-name").html("@" + result.name);
 

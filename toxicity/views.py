@@ -17,7 +17,7 @@ def user_toxicity(request, user_id):
     try:
         auth.get_access_token(verifier)
     except tweepy.TweepError:
-        print('Error! Failed to get access token.')
+        print(tweepy.TweepError)
 
     api = tweepy.API(auth)
 

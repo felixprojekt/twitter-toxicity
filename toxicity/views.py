@@ -50,9 +50,11 @@ def user_toxicity(request, user_id):
     }
 
     if 'toxicities' not in request.session:
+        print('Creating toxicities dict')
         request.session['toxicities'] = {}
 
     request.session['toxicities'][user.screen_name] = toxicity
+    request.session.modified = True
     print("Current session value: " + json.dumps(request.session['toxicities']))
 
     return JsonResponse(result, safe=False)

@@ -29,10 +29,9 @@ def user_toxicity(request, user_id):
     for tweet in api.user_timeline(user_id=user_id, count=3):
         print('Analyzing: ' + tweet.text)
         r = analyze_tweet(request, tweet.text)
-        if r:
-            print(r)
-            r = str(r)
-            toxicities.append(float(r))
+        print('Result of analyze_tweet: ' + r)
+        r = str(r)
+        toxicities.append(float(r))
 
     if len(toxicities) != 0:
         average = sum(toxicities) / len(toxicities)
@@ -73,7 +72,7 @@ def analyze_tweet(request, tweet_text):
     if 'attributeScores' in r.json():
         return r.json()['attributeScores']['TOXICITY']['summaryScore']['value']
     else:
-        return False
+        return 0
 
 
 def insights(request):

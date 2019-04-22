@@ -92,12 +92,19 @@ def analyze_tweet(request, tweet_text):
 def insights(request):
     results = request.session.get('toxicities')
 
-    sorted_results = sorted(results.items(), key=lambda kv: kv[1])
+    sorted_list = sorted(results.items(), key=lambda kv: kv[1])
 
-    print('Total result: ' + json.dumps(sorted_results))
+    sorted = collections.OrderedDict(sorted_list)
+
+    best = dict(sorted.items()[:5])
+    worst = dict(sorted.items()[-5:])
+
+    print('Best: ' + json.dumps(best))
+    print('Worst: ' + json.dumps(worst))
 
     context = {
-        "worst": results,
+        "worst": worst,
+        "best": best,
     }
 
     return render(request, 'login/list-items.html', context)

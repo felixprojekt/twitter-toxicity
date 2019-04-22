@@ -50,10 +50,9 @@ def user_toxicity(request, user_id):
     }
 
     if 'toxicities' not in request.session:
-        print("Toxicities not in session, creating list()")
-        request.session['toxicities'] = list()
+        request.session['toxicities'] = {}
 
-    request.session['toxicities'].append(result)
+    request.session['toxicities'][user.screen_name] = toxicity
     print("Current session value: " + json.dumps(request.session['toxicities']))
 
     return JsonResponse(result, safe=False)

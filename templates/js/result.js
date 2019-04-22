@@ -56,7 +56,7 @@ $(function() {
 
 						$("#loading-name").html("@" + result.name);
 
-						if(result.toxicity > 100) {
+						if(result.toxicity > 120) {
 							createBubble(result.name, result.toxicity * 1.8);
 						}
 

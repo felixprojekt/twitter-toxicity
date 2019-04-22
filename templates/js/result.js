@@ -36,8 +36,9 @@ $(function() {
 		let time = 0;
 
 		ids.children("span").each(function() {
+			const id = $(this).text();
+
 			setTimeout(function() {
-				const id = $(this).text();
 				$.ajax({
 					method: "GET",
 					url: "/toxicity/" + id + "/",

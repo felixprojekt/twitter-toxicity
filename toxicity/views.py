@@ -1,7 +1,7 @@
 import os
 import requests
 import tweepy
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 

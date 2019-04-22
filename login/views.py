@@ -12,10 +12,11 @@ def index(request):
     except tweepy.TweepError:
         print('Error! Failed to get request token.')
 
+    request.session['request_token'] = auth.request_token
+
     context = {
         "redirect_url": redirect_url,
     }
-    request.session['request_token'] = auth.request_token
 
     return render(request, 'login/index.html', context)
 
@@ -28,9 +29,9 @@ def result(request):
 
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 
-    # token = request.GET.get('oauth_token') # this can be issue
-    token = request.session['request_token']
-    request.session.delete('request_token')
+    token = request.GET.get('oauth_token')  # this can be issue
+    # token = request.session['request_token']
+    # request.session.delete('request_token')
 
     try:
         auth.request_token = {'oauth_token': token,

@@ -2,6 +2,8 @@ import os
 import requests
 import tweepy
 import json
+import operator
+import collections
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -90,11 +92,9 @@ def analyze_tweet(request, tweet_text):
 def insights(request):
     results = request.session.get('toxicities')
 
-    # worst = sorted(results, key=lambda dct: dct['toxicity'])
+    sorted_results = sorted(results.items(), key=lambda kv: kv[1])
 
-    # worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
-
-    print('Total result: ' + json.dumps(results))
+    print('Total result: ' + json.dumps(sorted_results))
 
     context = {
         "worst": results,

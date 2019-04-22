@@ -33,42 +33,48 @@ $(function() {
 			$("#loading-name").addClass("pulse")
 		}, 100);
 
+		let time = 0;
+
 		ids.children("span").each(function() {
-			const id = $(this).text();
-			$.ajax({
-				method: "GET",
-				url: "/toxicity/" + id + "/",
-				data: {
-					"token": token,
-					"verifier": verifier
-				},
-				beforeSend: function(result) {
+			setTimeout(function() {
+				const id = $(this).text();
+				$.ajax({
+					method: "GET",
+					url: "/toxicity/" + id + "/",
+					data: {
+						"token": token,
+						"verifier": verifier
+					},
+					beforeSend: function(result) {
 
-				},
-				error: function(result) {
-					console.log(result.responseText);
-				},
-				success: function(result) {
+					},
+					error: function(result) {
+						console.log(result.responseText);
+					},
+					success: function(result) {
 
-					var request_time = new Date().getTime() - start_time;
-					// console.log("fetched " + id + " loaded in " + request_time + " ms");
-					console.log(id + " " + result.toxicity);
+						var request_time = new Date().getTime() - start_time;
+						// console.log("fetched " + id + " loaded in " + request_time + " ms");
+						console.log(id + " " + result.toxicity);
 
-					$("#loading-name").html("@" + result.name);
+						$("#loading-name").html("@" + result.name);
 
-					if(result.toxicity > 100) {
-						createBubble(result.name, result.toxicity * 1.8);
+						if(result.toxicity > 100) {
+							createBubble(result.name, result.toxicity * 1.8);
+						}
+
+						len -= 1;
+
+						if(len < 1) {
+							setTimeout(function() {
+								showFinalResults();
+							}, 3000)
+						}
 					}
+				});
+			}, time);
 
-					len -= 1;
-
-					if(len < 1) {
-						setTimeout(function() {
-							showFinalResults();
-						}, 3000)
-					}
-				}
-			});
+			time += 2000;
 		});
 
     	window.history.replaceState('', '', window.location.href.split("?")[0]);

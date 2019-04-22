@@ -29,7 +29,7 @@ def user_toxicity(request, user_id):
 
     toxicities = list()
 
-    for tweet in api.user_timeline(user_id=user_id, count=3):
+    for tweet in api.user_timeline(user_id=user_id, count=2):
         print('Analyzing: ' + tweet.text)
         r = analyze_tweet(request, tweet.text)
         print(type(r))

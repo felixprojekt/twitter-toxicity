@@ -1,16 +1,16 @@
 <div class="results-col results--good">
     <h3>Good guys</h3>
     <ul id="good-results">
-        {% for item in best %}
-            <li>@{{ item }}</li>
+        {% for name, toxicity in best %}
+            <li>@{{ name }}</li>
         {% endfor %}
     </ul>
 </div>
 <div class="results-col results--bad">
     <h3>Bad guys</h3>
     <ul id="bad-results">
-        {% for item in worst %}
-            <li>@{{ item }}</li>
+        {% for name, toxicity in worst %}
+            <li>@{{ name }}</li>
         {% endfor %}
     </ul>
 </div>

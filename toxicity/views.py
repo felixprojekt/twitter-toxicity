@@ -87,18 +87,19 @@ def insights(request):
 
     sorted_list = sorted(results.items(), key=lambda kv: kv[1])
 
-    # sorted_dict = collections.OrderedDict(sorted_list)
-
     best = sorted_list[:5]
     worst = sorted_list[-5:]
     worst.reverse()
+
+    best_dict = collections.OrderedDict(best)
+    worst_dict = collections.OrderedDict(worst)
 
     print('Best: ' + json.dumps(best))
     print('Worst: ' + json.dumps(worst))
 
     context = {
-        "worst": worst,
-        "best": best,
+        "best": best_dict,
+        "worst": worst_dict,
     }
 
     return render(request, 'login/list-items.html', context)

@@ -44,6 +44,9 @@ def result(request):
     except tweepy.TweepError:
         print('Error! Failed to get access token.')
 
+    request.session['access_token'] = auth.access_token
+    request.session['access_token_secret'] = auth.access_token_secret
+
     api = tweepy.API(auth)
 
     context = {

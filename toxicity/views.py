@@ -6,18 +6,19 @@ from django.shortcuts import render
 
 
 def user_toxicity(request, user_id):
-    verifier = request.GET.get('verifier')
+    # verifier = request.GET.get('verifier')
+    # token = request.GET.get('token')
+
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 
-    token = request.GET.get('token')
-
-    auth.request_token = {'oauth_token': token,
-                          'oauth_token_secret': verifier}
+    # auth.request_token = {'oauth_token': token,
+    #                       'oauth_token_secret': verifier}
 
     try:
-        auth.get_access_token(verifier)
-    except tweepy.TweepError as e:
-        print(e.api_code + ": " + e.response)
+        # auth.get_access_token(verifier)
+        auth.set_access_token(request.session['access_token'], request.session['access_token_secret'])
+    except tweepy.TweepError:
+        print('Error! Failed to retrieve access token from session.')
 
     api = tweepy.API(auth)
 

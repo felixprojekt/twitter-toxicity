@@ -91,6 +91,7 @@ def insights(request):
 
     best = sorted_list[:5]
     worst = sorted_list[-5:]
+    worst.reverse()
 
     print('Best: ' + json.dumps(best))
     print('Worst: ' + json.dumps(worst))

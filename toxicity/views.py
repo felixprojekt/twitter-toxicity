@@ -9,16 +9,9 @@ from django.shortcuts import render
 
 
 def user_toxicity(request, user_id):
-    # verifier = request.GET.get('verifier')
-    # token = request.GET.get('token')
-
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 
-    # auth.request_token = {'oauth_token': token,
-    #                       'oauth_token_secret': verifier}
-
     try:
-        # auth.get_access_token(verifier) # probably not the best idea
         auth.set_access_token(request.session['access_token'], request.session['access_token_secret'])
     except tweepy.TweepError:
         print('Error! Failed to retrieve access token from session.')
@@ -52,12 +45,12 @@ def user_toxicity(request, user_id):
     }
 
     if 'toxicities' not in request.session:
-        print('Creating toxicities dict')
+        # print('Creating toxicities dict')
         request.session['toxicities'] = {}
 
     request.session['toxicities'][user.screen_name] = toxicity
     request.session.modified = True
-    print("Current session value: " + json.dumps(request.session['toxicities']))
+    # print("Current session value: " + json.dumps(request.session['toxicities']))
 
     return JsonResponse(result, safe=False)
 
@@ -94,10 +87,10 @@ def insights(request):
 
     sorted_list = sorted(results.items(), key=lambda kv: kv[1])
 
-    sorted_dict = collections.OrderedDict(sorted_list)
+    # sorted_dict = collections.OrderedDict(sorted_list)
 
-    best = dict(sorted_dict.items()[:5])
-    worst = dict(sorted_dict.items()[-5:])
+    best = sorted_list[:5]
+    worst = sorted_list[-5:]
 
     print('Best: ' + json.dumps(best))
     print('Worst: ' + json.dumps(worst))

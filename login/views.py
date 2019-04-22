@@ -29,8 +29,8 @@ def result(request):
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 
     # token = request.GET.get('oauth_token') # this can be issue
-    token = request.session.get('request_token')
-    request.session.delete('request_token')
+    token = request.session['request_token']
+    # request.session.delete('request_token')
 
     auth.request_token = {'oauth_token': token,
                           'oauth_token_secret': verifier}

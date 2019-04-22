@@ -5,8 +5,7 @@ import tweepy
 
 
 def index(request):
-    for key in request.session.keys():
-        del request.session[key]
+    del request.session['toxicities']
 
     auth = tweepy.OAuthHandler(os.environ['TWITTER_KEY'], os.environ['TWITTER_SECRET'])
 

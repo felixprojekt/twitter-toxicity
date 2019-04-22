@@ -94,8 +94,8 @@ def insights(request):
     best_dict = collections.OrderedDict(best)
     worst_dict = collections.OrderedDict(worst)
 
-    print('Best: ' + json.dumps(best))
-    print('Worst: ' + json.dumps(worst))
+    print('Best: ' + json.dumps(best_dict))
+    print('Worst: ' + json.dumps(worst_dict))
 
     context = {
         "best": best_dict,

@@ -94,10 +94,10 @@ def insights(request):
 
     sorted_list = sorted(results.items(), key=lambda kv: kv[1])
 
-    sorted = collections.OrderedDict(sorted_list)
+    sorted_dict = collections.OrderedDict(sorted_list)
 
-    best = dict(sorted.items()[:5])
-    worst = dict(sorted.items()[-5:])
+    best = dict(sorted_dict.items()[:5])
+    worst = dict(sorted_dict.items()[-5:])
 
     print('Best: ' + json.dumps(best))
     print('Worst: ' + json.dumps(worst))

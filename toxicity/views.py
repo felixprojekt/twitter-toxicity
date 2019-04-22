@@ -76,12 +76,12 @@ def analyze_tweet(request, tweet_text):
 def insights(request):
     results = request.session.get('toxicities')
 
-    worst = sorted(results, key=lambda dct: dct['toxicity'])
+    # worst = sorted(results, key=lambda dct: dct['toxicity'])
 
     # worst = {k: sizes_sorted[k] for k in list(sizes_sorted)[:5]}
 
     context = {
-        "worst": worst,
+        "worst": results,
     }
 
     return render(request, 'login/list-items.html', context)

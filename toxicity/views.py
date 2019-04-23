@@ -90,7 +90,13 @@ def insights(request):
 
 def worst_friends(request):
     friends_dict = get_worst_and_best_friends(request)
-    return JsonResponse(friends_dict['worst'], safe=False)
+
+    friends_list = list()
+
+    for screen_name, toxicity in friends_dict['worst']:
+        friends_list.append(screen_name)
+
+    return JsonResponse(friends_list, safe=False)
 
 
 def get_worst_and_best_friends(request):

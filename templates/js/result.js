@@ -78,10 +78,6 @@ $(function () {
     }
 
     function showFinalResults() {
-        $("#intro").hide();
-        $("#sign-in").hide();
-        $("#twitter-nickname-form").hide();
-        $(".loading-wrapper").hide();
 
         $.ajax({
             method: "GET",
@@ -104,11 +100,15 @@ $(function () {
                 console.log(result);
                 const worstFriends = result.join(", ");
 
-                $("#share-result").attr("href", "https://twitter.com/intent/tweet?text=My most toxic twitter friends: " + worstFriends + "shame on you!");
+                $("#share-result").attr("href", "https://twitter.com/intent/tweet?text=My most toxic twitter friends: " + worstFriends + ", shame on you!");
             }
         });
 
         setTimeout(function () {
+            $("#intro").hide();
+            $("#sign-in").hide();
+            $("#twitter-nickname-form").hide();
+            $(".loading-wrapper").hide();
             $("#result").removeClass("hidden").css("z-index", 5);
             $("#bubbles").css("opacity", ".1").css("z-index", 1);
             $("#bubbles div").css("color", "transparent");

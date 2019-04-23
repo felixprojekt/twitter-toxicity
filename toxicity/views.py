@@ -94,7 +94,7 @@ def worst_friends(request):
     friends_list = list()
 
     for key in friends_dict['worst']:
-        friends_list.append(key)
+        friends_list.append('@' + key)
 
     return JsonResponse(friends_list, safe=False)
 

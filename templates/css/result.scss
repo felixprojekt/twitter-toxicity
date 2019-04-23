@@ -1,14 +1,13 @@
 @import "mixins";
 @import "variables";
 
-.more-info-trigger-wrap {
-  float: right;
-  margin-top: 3.6rem;
-}
+#result {
+  position: absolute;
 
-#more-info-trigger {
-  color: #ffffff61;
-  cursor: pointer;
+  h1 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
 }
 
 .btn-warning {

@@ -10,7 +10,7 @@
     <h3>Bad guys</h3>
     <ul id="bad-results">
         {% for name, toxicity in worst.items %}
-            <li>@{{ name }} <span class="unfollow-button" data-screen_name="{{ name }}">Unfollow</span></li>
+            <li>@{{ name }} <span class="unfollow-button btn btn-warning" data-screen_name="{{ name }}">Unfollow</span></li>
         {% endfor %}
     </ul>
 </div>

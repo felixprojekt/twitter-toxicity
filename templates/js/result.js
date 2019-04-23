@@ -122,11 +122,7 @@ $(function() {
 	}
 
 	$(".unfollow-button").click(function() {
-        /**
-         * @TODO here
-         */
 	    console.log($(this).data("screen_name"));
-
     })
 });
 

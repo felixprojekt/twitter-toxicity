@@ -7,15 +7,13 @@
 	<title>Twitter Toxicity</title>
 	<meta name="author" content="Milan Švehla">
 	<link href="https://fonts.googleapis.com/css?family=Muli:400,700,900" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+{#	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">#}
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 	<link href="{% static "/css/custom.css" %}" rel="stylesheet">
+	<link href="{% static "/css/result.css" %}" rel="stylesheet">
 </head>
 <body class="loading">
 	<div class="wrapper">
-        <div id="debug" style="position: fixed; left: 20px;top:20px; right: 0;">
-
-        </div>
         <div id="ids" hidden>
              {% for id in ids %}
                 <span>{{ id }}</span>
@@ -26,11 +24,9 @@
 			<h2>Analyze your twitter friends and get rid of <em>toxic</em>, <em>insulting</em> and <em>violent</em> accounts.</h2>
 		</div>
 
-		<a href="" id="sign-in">Sign in</a>
+		<a href="" id="sign-in" class="btn btn-main">Sign in</a>
 
-		<div id="bubbles" class="hidden">
-
-		</div>
+		<div id="bubbles" class="hidden"></div>
 		<div class="loading-wrapper hidden">
 			<h2 id="loading-text">Hold on, just going through <span id="loading-name"></span></h2>
 		</div>
@@ -41,17 +37,16 @@
 				<div class="results-table" id="results-table">
 				</div>
                 <div class="results-footer">
-                    <a href="https://twitter.com/intent/tweet?text=My most toxic twitter accounts, shame on you!" id="share-result" target="_blank">Share my result</a>
+                    <a href="https://twitter.com/intent/tweet?text=My most toxic twitter accounts, shame on you!" id="share-result" class="btn btn-main" target="_blank">Share my result</a>
                     <span id="more-info-trigger">How it works?</span>
                 </div>
-
 			</div>
 		</div>
 
         <div id="more-info" class="hidden">
             <h1>Improving conversations online</h1>
             <p>I still work hard on description of this project.</p>
-
+            <a href="https://github.com/felixprojekt/twitter-toxicity">Source code</a>
         </div>
 	</div>
 

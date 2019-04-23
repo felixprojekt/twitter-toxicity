@@ -1,111 +1,121 @@
 @import "mixins";
+@import "variables";
 
 @include keyframes(pulse) {
-	0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @include keyframes(Gradient) {
-	0% { background-position: 0% 50%; }
-    50% { background-position: 100% 0%; }
-    100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @include keyframes(bubbleUp) {
-	0% { margin-top: 0px; 
-	margin-left: 15px;
-}
-	33% {
-		margin-left: -10px;
-	}
-	66% {
-		margin-left: 10px;
-	}
-	100% { margin-top: -100vh;  
+  0% {
+    margin-top: 0px;
+    margin-left: 15px;
+  }
+  33% {
+    margin-left: -10px;
+  }
+  66% {
+    margin-left: 10px;
+  }
+  100% {
+    margin-top: -100vh;
 
-	margin-left: -5px;
+    margin-left: -5px;
+  }
 }
-}
-
-$primary: #4DFF9B;
-$secondary: #d9ff4d;
 
 html, body {
-	margin: 0;
-	padding: 0;
-	height: calc(100vh - 18px);
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - 18px);
 }
 
 body {
-	background: linear-gradient(264deg, #671CFF 0%, #002659 100%);
-	// background: linear-gradient(264deg, #671CFF 0%, #002659 100%);
-	// background: linear-gradient(264deg, $secondary 0%, #671CFF 30%);
-	background-size: 200% 200%;
-	border: 9px solid $primary;
-	font-family: "Muli", sans-serif;
-	color: $primary;
-	font-weight: 700;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	letter-spacing: 1px;
-	position: relative;
+  background: linear-gradient(264deg, #671CFF 0%, #002659 100%);
+  background-size: 200% 200%;
+  border: 9px solid $primary;
+  font-family: "Muli", sans-serif;
+  color: $primary;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  letter-spacing: 1px;
+  position: relative;
 
-	&.loading {
-		.wrapper {
-			opacity: 0;
-			transition: .4s opacity;
-		}
-	}
+  &.loading {
+    .wrapper {
+      opacity: 0;
+      transition: .4s opacity;
+    }
+  }
 
-	//@include animation(Gradient, 5s, infinite, ease);
+  //@include animation(Gradient, 5s, infinite, ease);
 }
 
 .wrapper {
-	padding: 6% 10% 10%;
-	height: calc(100vh - 18px);
-	opacity: 1;
+  padding: 6% 10% 10%;
+  height: calc(100vh - 18px);
+  opacity: 1;
 }
 
 div {
-	transition: 1s all;
-	opacity: 1;
-	visibility: visible;
+  transition: 1s all;
+  opacity: 1;
+  visibility: visible;
 }
 
 .hidden {
-	visibility: hidden;
-	opacity: 0;
-	transition: 1s all;
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s all;
 }
 
 .text-wrapper {
-	max-width: 900px;
+  max-width: 900px;
 }
 
 h1, h2 {
-	
+
 }
 
 h1 {
-	font-size: 5rem;
-	font-weight: 900;
+  font-size: 5rem;
+  font-weight: 900;
 
-	em {
-		font-style: unset;
-		color: $secondary;
-	}
+  em {
+    font-style: unset;
+    color: $secondary;
+  }
 }
 
 h2 {
-	font-size: 2rem;
-	font-weight: 700;
+  font-size: 2rem;
+  font-weight: 700;
 
-	em {
-		font-style: unset;
-		color: $secondary;
-	}
+  em {
+    font-style: unset;
+    color: $secondary;
+  }
 }
 
 ::placeholder {
@@ -115,192 +125,195 @@ h2 {
 }
 
 #twitter-nickname-form {
-	margin-top: 3rem;
-	label {
-		&:before {
-			content: "@";
-			font-size: 2.5rem;
-			display: inline-block;
-			margin-right: 1px;
-			color: white;
-			position: relative;
-			bottom: 1px;
+  margin-top: 3rem;
 
-		}
-	}
+  label {
+    &:before {
+      content: "@";
+      font-size: 2.5rem;
+      display: inline-block;
+      margin-right: 1px;
+      color: white;
+      position: relative;
+      bottom: 1px;
+
+    }
+  }
 }
 
 #twitter-nickname {
-	background: transparent;
-	border: 0;
-	border-bottom: 3px solid white;
-	font-size: 2.5rem;
-	font-family: "Muli", sans-serif;
-	letter-spacing: 1px;
-	color: white;
-	padding: .4rem 0rem .2rem 0rem;
-	width: 398px;
-	caret-color: white;
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid white;
+  font-size: 2.5rem;
+  font-family: "Muli", sans-serif;
+  letter-spacing: 1px;
+  color: white;
+  padding: .4rem 0rem .2rem 0rem;
+  width: 398px;
+  caret-color: white;
 
-	&:focus {
-		outline: 0;
-	}
+  &:focus {
+    outline: 0;
+  }
 
-	&:-internal-autofill-selected {
-		backgrond-color: transparent !important;
-		color: white !important;
-	}
+  &:-internal-autofill-selected {
+    backgrond-color: transparent !important;
+    color: white !important;
+  }
 
-	&[readonly] {
-		border-bottom: 3px solid transparent;
-		background: transparent;
-	}
-	
+  &[readonly] {
+    border-bottom: 3px solid transparent;
+    background: transparent;
+  }
+
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 input:-webkit-autofill {
-    -webkit-text-fill-color: white !important;
+  -webkit-text-fill-color: white !important;
 }
 
-.button {
+.btn {
+  border-radius: 200px;
+}
 
+.btn-main {
+  border: 1px solid white;
+
+  color: white;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 1rem 4rem 1rem 5rem;
+  text-decoration: none;
 }
 
 #sign-in {
-	border: 1px solid white;
-	border-radius: 200px;
-	color: white;
-	background: {
-		color: transparent;
-		image: url(../img/twitter.svg);
-		size: 30px;
-		position: 2.4rem center;
-		repeat: no-repeat;
-	};
-	display: inline-block;
-	margin-top: 3rem;
-	-webkit-appearance: none;
-	appearance: none;
-	padding: 1rem 4rem 1rem 5rem;
-	text-decoration: none;
+  background: {
+    color: transparent;
+    image: url(../img/twitter.svg);
+    size: 30px;
+    position: 2.4rem center;
+    repeat: no-repeat;
+  };
+  display: inline-block;
+  margin-top: 3rem;
 }
 
 #share-result {
-	border: 1px solid $primary;
-	border-radius: 200px;
-	color: $primary;
-	background: {
-		color: transparent;
-		image: url(../img/twitter-green.svg);
-		size: 30px;
-		position: 2.4rem center;
-		repeat: no-repeat;
-	};
-	display: inline-block;
-	margin-top: 3.6rem;
-	padding: 1rem 4rem 1rem 5rem;
-	text-decoration: none;
+  border: 1px solid $primary;
+  border-radius: 200px;
+  color: $primary;
+  background: {
+    color: transparent;
+    image: url(../img/twitter-green.svg);
+    size: 30px;
+    position: 2.4rem center;
+    repeat: no-repeat;
+  };
+  display: inline-block;
+  margin-top: 3.6rem;
+  padding: 1rem 4rem 1rem 5rem;
+  text-decoration: none;
 }
 
 .loading-wrapper {
-	h2 {
-		margin-top: 0px;
-	}
-
-
+  h2 {
+    margin-top: 0px;
+  }
 }
 
 #loading-name {
-	color: white;
+  color: white;
 
-	&.pulse {
-		//@include animation(pulse, 2s, infinite);
-	}
+  &.pulse {
+    //@include animation(pulse, 2s, infinite);
+  }
 }
 
 #bubbles {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 
-	div {
-		border-radius: 50%;
-		@include box-shadow(0 20px 30px rgba(208, 255, 77, 0.1), inset 0px 10px 30px 5px rgba(208, 255, 77, 1));
-		// @include box-shadow(0 20px 30px rgba(77, 255, 155, 0.1), inset 0px 10px 30px 5px rgba(77, 255, 155, 1));
-	    height: 160px;
-		position: absolute;
-		left: 20%;
-		top: 20%;
-		width: 160px;
-		@include animation(bubbleUp, 8s, 1, ease-in-out);
-		// @include animation(bubbleWobble, 8s, infinite, ease-in-out);
-		animation-fill-mode: forwards;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: white;
-		font-weight: 400;
+  div {
+    border-radius: 50%;
+    @include box-shadow(0 20px 30px rgba(208, 255, 77, 0.1), inset 0px 10px 30px 5px rgba(208, 255, 77, 1));
+    // @include box-shadow(0 20px 30px rgba(77, 255, 155, 0.1), inset 0px 10px 30px 5px rgba(77, 255, 155, 1));
+    height: 160px;
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    width: 160px;
+    @include animation(bubbleUp, 8s, 1, ease-in-out);
+    // @include animation(bubbleWobble, 8s, infinite, ease-in-out);
+    animation-fill-mode: forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 400;
 
-		&:after {
-			// @include radial-gradient(center, ellipse cover,  rgba(77, 255, 155,0.5) 0%, rgba(77, 255, 155,0) 70%);
-			@include radial-gradient(center, ellipse cover,  rgba(208, 255, 77,0.5) 0%, rgba(208, 255, 77,0) 70%);
-			border-radius: 50%;
-			
-			@include box-shadow(inset 0 20px 30px rgba(208, 255, 77, 0.3));
-			
-			content: "";
-		    height: 100%;
-			position: absolute;
-			width: 100%;
-		}
+    &:after {
+      // @include radial-gradient(center, ellipse cover,  rgba(77, 255, 155,0.5) 0%, rgba(77, 255, 155,0) 70%);
+      @include radial-gradient(center, ellipse cover, rgba(208, 255, 77, 0.5) 0%, rgba(208, 255, 77, 0) 70%);
+      border-radius: 50%;
 
-	}
+      @include box-shadow(inset 0 20px 30px rgba(208, 255, 77, 0.3));
+
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+
+  }
 }
 
 #result {
-	position: absolute;
-	h1 {
-		margin-bottom: 1rem;
-		line-height: 1.2;
-	}
+  position: absolute;
+
+  h1 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
 }
 
 .results-col {
-	width: 49%;
-	display: inline-block;
-	vertical-align: top;
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
 
-	ul {
-		margin: 0;
-		padding: 0;
-	}
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 
-	li {
-		list-style-type: none;
-		margin-top: 5px;
-	}
+  li {
+    list-style-type: none;
+    margin-top: 5px;
+  }
 
-	h3 {
-		margin-bottom: .4rem;
-    	font-weight: 900;
-    	font-size: 1.7rem;
-	}
+  h3 {
+    margin-bottom: .4rem;
+    font-weight: 900;
+    font-size: 1.7rem;
+  }
 }
 
 .results-good {
-	color: #4D86FF;
+  color: #4D86FF;
 }
 
 .results--bad {
-	color: #D0FF4D;
+  color: #D0FF4D;
 }
 

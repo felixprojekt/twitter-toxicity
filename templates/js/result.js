@@ -120,6 +120,14 @@ $(function() {
 	function randBetween(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) + min)
 	}
+
+	$(".unfollow-button").click(function() {
+        /**
+         * @TODO here
+         */
+	    console.log($(this).data("screen_name"));
+
+    })
 });
 
 

@@ -61,11 +61,30 @@ body {
   overflow: hidden;
   letter-spacing: 1px;
   position: relative;
+  transition: .3s background, .3s border;
 
   &.loading {
     .wrapper {
       opacity: 0;
       transition: .4s opacity;
+    }
+  }
+
+  &.more-info-active {
+    border: 9px solid $bg;
+    background: $primary;
+    color: $bg;
+
+    #more-info {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      .wrapper {
+        overflow: auto;
+      }
     }
   }
 }
@@ -278,12 +297,19 @@ input:-webkit-autofill {
 
 #more-info-trigger-wrap {
   position: absolute;
-  right:15px;
-  bottom: 15px;
+  right: 25px;
+  bottom: 25px;
 }
 
 #more-info-trigger {
   color: #ffffff61;
   cursor: pointer;
+  padding: 10px 20px;
+  display: block;
+}
+
+#more-info {
+  background: $primary;
+  color: $bg;
 }
 

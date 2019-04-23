@@ -21,6 +21,10 @@ def index(request):
     return render(request, 'login/index.html', context)
 
 
+def more_info(request):
+    return render(request, 'login/more-info.html')
+
+
 def result(request):
     verifier = request.GET.get('oauth_verifier')
 

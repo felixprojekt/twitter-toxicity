@@ -13,7 +13,7 @@
 .btn-warning {
   border: 1px solid $secondary;
   background: $secondary;
-  color: #002659;
+  color: $bg;
   cursor: pointer;
 
   &:hover, &:focus, &:active {

@@ -63,9 +63,7 @@ $(function () {
                         len -= 1;
 
                         if (len < 1) {
-                            setTimeout(function () {
-                                showFinalResults();
-                            }, 3000)
+                            showFinalResults();
                         }
                     }
                 });
@@ -110,9 +108,11 @@ $(function () {
             }
         });
 
-        $("#result").removeClass("hidden").css("z-index", 5);
-        $("#bubbles").css("opacity", ".1").css("z-index", 1);
-        $("#bubbles div").css("color", "transparent");
+        setTimeout(function () {
+            $("#result").removeClass("hidden").css("z-index", 5);
+            $("#bubbles").css("opacity", ".1").css("z-index", 1);
+            $("#bubbles div").css("color", "transparent");
+        }, 3000)
     }
 
     function createBubble(name, size) {

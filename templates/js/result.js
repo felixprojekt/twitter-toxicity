@@ -103,6 +103,8 @@ $(function () {
                 console.log(result.responseText)
             },
             success: function (result) {
+                console.log(result);
+
                 const worstFriends = result.join(", ");
 
                 $("#share-result").attr("href", "https://twitter.com/intent/tweet?text=My most toxic twitter friends: " + worstFriends + "shame on you!");

@@ -83,6 +83,17 @@ def analyze_tweet(request, tweet_text):
 
 
 def insights(request):
+    context = get_worst_and_best_friends(request)
+
+    return render(request, 'login/list-items.html', context)
+
+
+def worst_friends(request):
+    friends_dict = get_worst_and_best_friends(request)
+    return JsonResponse(friends_dict['worst'], safe=False)
+
+
+def get_worst_and_best_friends(request):
     results = request.session.get('toxicities')
 
     sorted_list = sorted(results.items(), key=lambda kv: kv[1])
@@ -94,9 +105,9 @@ def insights(request):
     best_dict = collections.OrderedDict(best)
     worst_dict = collections.OrderedDict(worst)
 
-    context = {
+    friends = {
         "best": best_dict,
         "worst": worst_dict,
     }
 
-    return render(request, 'login/list-items.html', context)
+    return friends
